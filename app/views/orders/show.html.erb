@@ -1,0 +1,13 @@
+<h3>Order #<%= @order.id%>
+<ul class="list-unstyled">
+	<li>Customer Name: <%=@order.customer_name%></li>
+	<li>Sales Channel: <%=@order.sales_channel.try(:name)%></li>
+	<li>Line Items</li>
+	<li>
+		<ul>
+			<%-@order.line_items.each do |line_item| %>
+				<li><%=line_item.product.name%>: <%=price_of(line_item.product)%></li>
+			<%end%>
+		</ul>
+	</li>
+</ul>

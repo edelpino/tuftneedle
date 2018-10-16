@@ -1,0 +1,40 @@
+<%= render partial: "error_messages", locals: { object: @order } %>
+<div class="m-t-1">&nbsp;</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="row">
+            <div class="card-deck">
+                <%= f.fields_for :line_items do |ff| %>
+                <%- products.each do |product| %>
+                <div class="card text-center border-dark" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title "><%= product.name %></h5>
+                        <%= ff.label :product_id, product.name, for: "order_line_items_attributes_0_product_id_#{product.id}", productName:product.name, cost:product.cost do %>
+                        <%= ff.radio_button :product_id, product.id, data: { price: price_of(product), dimensions: product.dimensions } %>
+                        <span><%= price_of(product) %> </span>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
+        <div class="m-t-1">&nbsp;</div>
+        <div class="row ">
+            <div id="product_details" class="lead col-sm "></div>
+            <p class="">
+                <%= link_to 'Add To Cart', '#', id: 'add_to_cart', class:"btn btn-secondary" %>
+            </p>
+        </div>
+    </div>
+    <div class="col-sm">
+        <ul id="cart" class="list-group"></ul>
+        <br />
+        <div class="form-group">
+          <%=f.text_field :customer_name, class:"form-control", placeholder:"Enter Customer Name"%>
+        </div>
+        <p>
+            <%= f.submit 'Checkout', class:"btn btn-dark btn-lg btn-block" %>
+        </p>
+    </div>
+</div>

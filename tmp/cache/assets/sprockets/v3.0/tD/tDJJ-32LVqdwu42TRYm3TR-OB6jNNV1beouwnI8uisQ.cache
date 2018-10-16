@@ -1,0 +1,37 @@
+I",(function() {
+  var addCartItems;
+
+  $(function() {
+    $("input:radio").change(function() {
+      var dimensions, price;
+      if ($(this).prop("checked", true)) {
+        price = "<b>" + ($(this).data('price')) + "</b>";
+        dimensions = "<b>" + ($(this).data('dimensions')) + "</b>";
+        return $("#product_details").html(price + "<br/>" + dimensions);
+      }
+    });
+    return $("#add_to_cart").click(function(e) {
+      var $form, $hidden_input, $input, $label, product_id;
+      e.preventDefault();
+      $input = $("input:radio:checked");
+      $label = $("label[for='" + ($input.attr("id")) + "']");
+      $form = $('#new_order');
+      product_id = $input.val();
+      $hidden_input = "<input type='hidden' name='" + ($input.attr('name')) + "' value='" + product_id + "' />";
+      $form.prepend($hidden_input);
+      $("#cart").append("<li productId='" + product_id + "' class='list-group-item'>" + ($label.text()) + "</li>");
+      addCartItems(product_id);
+      return $.each($form.find("input:hidden"), function(index, value) {
+        return $(this).attr('name', $(this).attr('name').replace(/\d+/g, index));
+      });
+    });
+  });
+
+  addCartItems = function(product_id) {
+    return $.each($('[productId]'), function(index, value) {
+      return console.log($(this));
+    });
+  };
+
+}).call(this);
+:ET

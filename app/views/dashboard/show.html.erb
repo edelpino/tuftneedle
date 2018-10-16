@@ -1,0 +1,85 @@
+<h1>Tuft &amp; Needle</h1>
+
+<h2 align=center>&amp;Introduction</h2>
+
+<p>Thank you for your interest in joining the team at Tuft & Needle! This Rails application is a very small sampling of the kind of application that you would be working on as a developer at T&N. We've designed a few features for you to work through that will help us get a feel for where you are in your journey as a developer and will hopefully give you some small insight into what it's like to work with us. This application has basic pages setup to <%= link_to 'create an Order', new_order_path %> of mattresses and view the details of that Order. Below are some enhancements to the application to work through. You may choose any or all of these features to work on. Feel free to add or subtract anything you want from this application from gems, to the database schema, to business logic and tests. A cucumber suite as well as a mini test suite has been started and may be extended if you choose.</p>
+<p><%=link_to 'View Orders', orders_path%></p>
+
+<br />
+
+<h2 align=center>&amp;Stories</h2>
+
+<h3>(1) Customer views items in cart grouped by product</h3>
+
+<pre>
+In order to provide a clear shopping experience
+As a customer adding multiple items to my shopping cart
+I want to see the products I've added, that are the same, grouped together
+
+Given the following products
+- King Mattress
+- Queen Mattress
+- Twin Mattress
+
+When I select "King Mattress $700.00"
+And I click "Add to Cart"
+Then I should see "King Mattress $700.00" in my shopping cart
+
+When I select "King Mattress $700.00"
+And I click "Add to Cart"
+Then I should see "(2) King Mattress $1400.00" in my shopping cart
+</pre>
+
+<h3>(2) Customer experience representative views order list</h3>
+
+<pre>
+In order to view all of the recent orders
+As a customer experience representative on my dashboard
+I want to see a list of all the recent orders
+
+Given 5 recent orders
+When I am on the dashboard page
+And I click "Orders"
+Then I should see a list in the following format:
+  | Order Number | Customer | Date Created |
+  | 1            | Jane Doe | 01/01/2017   |
+</pre>
+
+<h3>(3) Customer experience representative views sales channel for an order</h3>
+
+<pre>
+In order to see where an order originated from
+As a customer experience representative viewing the details of an order
+I want to see the sales channel for that order
+
+- For an order placed by a customer the sales channel should be 'Online'
+- For an order placed by a customer experience representative the sales channel should be 'CX'
+- For an order placed in a retail store the sales channel should be 'Retail'
+
+Given an order placed Online
+When I am on the detail page for that order
+Then I should see the sales channel 'Online' reflected
+
+Given an order placed by a customer service representative
+When I am on the detail page for that order
+Then I should see the sales channel 'CX' reflected
+
+Given an order placed in a retail location
+When I am on the detail page for that order
+Then I should see the sales channel 'Retail' reflected
+</pre>
+
+<h3>(4) Customer experience representative views orders list sorted by sales channel</h3>
+
+<pre>
+In order to see orders by different sales channels
+As a customer experience representative viewing the orders list
+I want to filter the order list by sales channel
+
+Given an order placed Online
+And an order placed by CX
+And I am viewing the orders lists
+When I filter the list by 'Online' orders
+Then I should see Online orders
+And I should not see CX orders
+</pre>
