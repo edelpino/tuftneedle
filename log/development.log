@@ -2678,3 +2678,108 @@ Processing by OrdersController#ajax_filter_orders as */*
 Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1037108845456211745)[0m
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to InitializeOrderData (20181017005918)
+  [1m[35m (11.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181017005918"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1037108845456211745)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/orders" for ::1 at 2018-10-16 23:11:11 -0500
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mSalesChannel Load (0.6ms)[0m  [1m[34mSELECT "sales_channels".* FROM "sales_channels"[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" ORDER BY "orders"."created_at" DESC[0m
+  Rendered orders/_orders_table.html.erb (25.4ms)
+  Rendered orders/index.html.erb within layouts/application (71.6ms)
+Completed 200 OK in 763ms (Views: 494.0ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/orders/ajax_filter_orders/customer_service_rep" for ::1 at 2018-10-16 23:11:15 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"customer_service_rep"}
+  Rendered orders/_orders_table.html.erb (0.5ms)
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/all" for ::1 at 2018-10-16 23:11:17 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"all"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered orders/_orders_table.html.erb (6.9ms)
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders" for ::1 at 2018-10-16 23:11:50 -0500
+Processing by OrdersController#index as HTML
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mSalesChannel Load (0.4ms)[0m  [1m[34mSELECT "sales_channels".* FROM "sales_channels"[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" ORDER BY "orders"."created_at" DESC[0m
+  Rendered orders/_orders_table.html.erb (17.7ms)
+  Rendered orders/index.html.erb within layouts/application (36.2ms)
+Completed 200 OK in 71ms (Views: 49.5ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/orders/ajax_filter_orders/customer_service_rep" for ::1 at 2018-10-16 23:11:53 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"customer_service_rep"}
+  Rendered orders/_orders_table.html.erb (0.5ms)
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/all" for ::1 at 2018-10-16 23:11:54 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"all"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" ORDER BY "orders"."created_at" DESC[0m
+  Rendered orders/_orders_table.html.erb (6.1ms)
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/ajax_filter_orders/retail" for ::1 at 2018-10-16 23:11:58 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"retail"}
+  Rendered orders/_orders_table.html.erb (0.4ms)
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/customer_service_rep" for ::1 at 2018-10-16 23:12:00 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"customer_service_rep"}
+  Rendered orders/_orders_table.html.erb (0.5ms)
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/online" for ::1 at 2018-10-16 23:12:01 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"online"}
+  Rendered orders/_orders_table.html.erb (0.5ms)
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/all" for ::1 at 2018-10-16 23:12:03 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"all"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" ORDER BY "orders"."created_at" DESC[0m
+  Rendered orders/_orders_table.html.erb (7.0ms)
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/ajax_filter_orders/customer_service_rep" for ::1 at 2018-10-16 23:15:24 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"customer_service_rep"}
+  Rendered orders/_orders_table.html.erb (0.4ms)
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/ajax_filter_orders/retail" for ::1 at 2018-10-16 23:15:26 -0500
+Processing by OrdersController#ajax_filter_orders as */*
+  Parameters: {"key"=>"retail"}
+  Rendered orders/_orders_table.html.erb (0.5ms)
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+

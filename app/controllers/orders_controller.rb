@@ -23,7 +23,12 @@ class OrdersController < ApplicationController
   end
 
   def ajax_filter_orders
-    @orders = SalesChannel.where(key:params[:key]).orders
+    if params[:key] == 'all'
+      @orders = Order.order(created_at: :desc)
+    else
+      @orders = SalesChannel.where(key:params[:key]).orders  
+    end
+    
 
     render json: [render_to_string(partial:'orders_table')]
   end

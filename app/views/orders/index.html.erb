@@ -4,7 +4,7 @@
 	<label>Sales Channel Filter</label>
 	&nbsp;&nbsp;
 	<select class="form-control" name="sales_channel_filter">
-		<option>No Filter</option>
+		<option value="all">No Filter</option>
 		<%-sales_channels.each do |sales_channel|%>
 			<option value="<%=sales_channel.key%>"><%=sales_channel.name%></option>
 		<%end%>
