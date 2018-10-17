@@ -3,7 +3,8 @@
 ### Database Setup
 
 username: *interview*
-passowrd: *interview*
+
+password: *interview*
 
 
 ### Initial Data
